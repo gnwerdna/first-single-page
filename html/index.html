@@ -12,7 +12,31 @@
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-none fixed-top py-0">
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-none fixed-top">
+      <a class="navbar-brand" href="#"><img src="../image/wedo.png" width="100px" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-nav" aria-controls="navbarSupportedContent"
+         aria-expanded="false" aria-label="Toggle navigation">
+         Menu <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="my-nav">
+         <ul class="navbar-nav ml-auto" id="topMenu">
+            <li class="nav-item mx-4">
+               <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item mx-4">
+               <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item mx-4">
+               <a class="nav-link" href="#contact">Contact</a>
+            </li>
+         </ul>
+      </div>
+
+   </nav>
+
+   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-none fixed-top py-0">
       <div class="container h-100">
          <a class="navbar-brand" href="#"><img src="../image/wedo.png" width=100px alt=""></a>
          <button class="navbar-toggler" type="button" aria-expanded="false" data-target="#my-nav" data-toggle="collapse">
@@ -33,7 +57,7 @@
          </div>
       </div>
 
-   </nav>
+   </nav> -->
 
    <section id="start">
       <header class="text-center text-white py-5">
@@ -191,39 +215,40 @@
          topMenuHeight = topMenu.outerHeight(),
          scrollItems = menuItems.map(() => {
             var item = $($(this).attr('href'));
-            if(item.length) {
-               return item;}
-         });
-         menuItems.click(function(e) {
-            var href = $(this).attr('href'),
-               offsetTop = href === "#" ? 
-               0 : $(href).offset().top - topMenuHeight+1; 
-            $('body, html').stop().animate({
-               scrollTop: offsetTop
-            }, 300);
-            e.preventDefault();
-         });
-         $(window).scroll(function() {
-            var $nav = $('.navbar.fixed-top');
-            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-            var fromTop = $(this).scrollTop() + topMenuHeight;
-            var current = scrollItems.map(() => {
-               if($(this).offset().top < fromTop) {
-                  // console.log($(this).offset().top);
-                  return this;
-               }
-            });
-            // console.log(current);
-
-            current = current[current.length - 1];
-            var id = current && current.length ? current[0].id:"";
-            if(lastId !== id) {
-               lastId = id;
-               menuItems
-                  .parent().removeClass("active")
-                  .end().filter("[href='#" + id +"']").parent().addClass("active");
+            if (item.length) {
+               return item;
             }
          });
+      menuItems.click(function (e) {
+         var href = $(this).attr('href'),
+            offsetTop = href === "#" ?
+            0 : $(href).offset().top - topMenuHeight + 1;
+         $('body, html').stop().animate({
+            scrollTop: offsetTop
+         }, 300);
+         e.preventDefault();
+      });
+      $(window).scroll(function () {
+         var $nav = $('.navbar.fixed-top');
+         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+         var fromTop = $(this).scrollTop() + topMenuHeight;
+         var current = scrollItems.map(() => {
+            if ($(this).offset().top < fromTop) {
+               // console.log($(this).offset().top);
+               return this;
+            }
+         });
+         // console.log(current);
+
+         current = current[current.length - 1];
+         var id = current && current.length ? current[0].id : "";
+         if (lastId !== id) {
+            lastId = id;
+            menuItems
+               .parent().removeClass("active")
+               .end().filter("[href='#" + id + "']").parent().addClass("active");
+         }
+      });
    </script>
 
 </body>

@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+* {
+    padding: 0;
+    margin:0;
+}
 .scrolled {
     background: white;
     transition: background-color 200ms linear;
@@ -37,7 +42,8 @@ body {
 }
 
 nav {
-    height: 12vh;
+    height: 10vh;
+    background-color: none !important;
 }
 
 nav .navbar-nav .nav-link {
@@ -138,3 +144,32 @@ input {
     font-size: .8rem !important;
 }
 
+@media only screen and (max-width: 991px) {
+    nav {
+        padding: 0 !important;
+        background: white;
+        height: 9vh;
+    }
+    nav .navbar-brand {
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+
+    nav .navbar-toggler {
+        margin-right: 4rem;
+        margin-right: 4rem;
+    }
+
+    nav .navbar-collapse {
+        margin-top:1rem;
+        padding-left: 2.8rem;
+        background: white;
+        padding-bottom: 1rem;
+    }
+    nav .navbar-collapse .nav-link {
+        color: rgba(22, 22, 22, .5) !important;
+    }
+    nav .navbar-collapse .nav-link:hover {
+        color: rgba(22, 22, 22, 1) !important;
+    }
+}
